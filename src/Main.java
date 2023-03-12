@@ -21,11 +21,11 @@ public class Main {
     int groups = 1;
     for (int groupId = 0; groupId < groups; ++groupId) {
       // для каждой группы:
-      readGroup(br, students,studentsFile);
+      readGroup(br, students, studentsFile);
     }
     for (Student student : students) {
-      System.out.printf("%s (%s) в группе %s%n", student.getName(), student.getEMail(),
-          student.getGroup());
+      System.out.printf("В группе (%s) %s :%s%n", student.getGroup(), student.getName(),
+          student.getEMail());
     }
   }
 
@@ -36,9 +36,8 @@ public class Main {
     BufferedReader fileReader = new BufferedReader(new FileReader(studentsFile));
 
     //int studentsNumber = Integer.parseInt(br.readLine());
-   for(String line = fileReader.readLine();line!=null; line= fileReader.readLine())
-   {
-     String groupName = line.substring(0,line.indexOf(":"));
+    for (String line = fileReader.readLine(); line != null; line = fileReader.readLine()) {
+      String groupName = line.substring(0, line.indexOf(":"));
       //String line = br.readLine();
       Student student = Student.parseStudent(groupName, line);
       students.add(student);

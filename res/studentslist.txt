@@ -3,3 +3,5 @@ Cohort24:Lytvynov Sergii
 Cohort24:Ivanov Nikolay
 Cohort23:Sergeev Stas,12221@gmail.com
 Cohort23:Nikiforov Andrey,Hilla@amazon.de
+Cohort21:Andreev Andre,Andre@gmail.com
+Cohort21:Yakubevich Pikchuk,yolka@amazon.de
