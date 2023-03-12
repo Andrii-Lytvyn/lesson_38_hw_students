@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,12 +13,15 @@ public class Main {
   // красиво вывести состав групп на экран
   public static void main(String[] args) throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+    File studentsFile = new File("res/studentslist.txt");
+    BufferedReader fileReader = new BufferedReader(new FileReader(studentsFile));
     List<Student> students = new ArrayList<>();
     // прочитать количество групп
     int groups = Integer.parseInt(br.readLine());
     for (int groupId = 0; groupId < groups; ++groupId) {
       // для каждой группы:
-      readGroup(br, students);
+      readGroup(br, students,studentsFile);
     }
     for (Student student : students) {
       System.out.printf("%s (%s) в группе %s%n", student.getName(), student.getEMail(),
@@ -31,13 +32,16 @@ public class Main {
   // - прочитать название группы
   // - прочитать количество студентов
   // - прочитать информацию о студентах - "имя" или "имя,e-mail" для каждого в отдельной строке
-  private static void readGroup(BufferedReader br, List<Student> students) throws IOException {
+  private static void readGroup(BufferedReader br, List<Student> students, File studentsFile) throws IOException {
+    BufferedReader fileReader = new BufferedReader(new FileReader(studentsFile));
     String groupName = br.readLine();
-    int studentsNumber = Integer.parseInt(br.readLine());
-    for (int i = 0; i < studentsNumber; ++i) {
-      String line = br.readLine();
+    //int studentsNumber = Integer.parseInt(br.readLine());
+   for(String line = fileReader.readLine();line!=null; line= fileReader.readLine())
+   {
+      //String line = br.readLine();
       Student student = Student.parseStudent(groupName, line);
       students.add(student);
     }
+
   }
 }
