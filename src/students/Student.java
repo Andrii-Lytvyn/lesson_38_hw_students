@@ -64,12 +64,12 @@ public class Student {
   public static Student parseStudent(String group, String line) {
     int sepIndex = line.indexOf(SEP); // ищем запятую в переданной строке
     if (sepIndex != -1) {
-      String name = line.substring(0, sepIndex);
+      String name = line.substring(line.indexOf(":")+1, sepIndex);
       String eMail = line.substring(sepIndex + 1); // начинаем ПОСЛЕ разделителя
       return new Student(name, group, eMail);
     }
     // запятой нет - в строке line только имя
 //    String name = line;
-    return new Student(/*name*/line, group);
+    return new Student(/*name*/line.substring(line.indexOf(":")+1), group);
   }
 }
